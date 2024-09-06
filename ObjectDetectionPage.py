@@ -15,8 +15,8 @@ frame_count = 0
 frame_skip_threshold = 3
 model = None
 video_paused = False
-correct_username = "admin"
-correct_password = "1234"
+correct_username = "YOUR_USERNAME"
+correct_password = "YOUR_PASSWORD"
 ser = None
 
 # Function to read coco.txt
@@ -32,13 +32,6 @@ def start_webcam():
         cap = cv2.VideoCapture(0)  # Use the default webcam (you can change the index if needed)
         is_camera_on = True
         video_paused = False
-        #update_canvas()  # Start updating the canvas
-        '''
-        ser = serial.Serial('COM4', 9600)  # COM4'ü kendi kullanmak istediğiniz COM portuyla değiştirin, baud rate'i uygun bir değerle değiştirin
-        ser.write("Hello, World!\n".encode())
-        response = ser.readline().decode().strip()
-        print("AI Thinker'dan gelen yanıt:", response)
-        '''
         update_canvas()  # Start updating the canvas
 
 # Function to stop the webcam feed
@@ -48,10 +41,7 @@ def stop_webcam():
         cap.release()
         is_camera_on = False
         video_paused = False
-    '''
-    if ser is not None:
-        ser.close()
-    '''
+
 # Function to update the Canvas with the webcam frame or video frame
 def update_canvas():
     global is_camera_on, frame_count, video_paused, ser
@@ -207,7 +197,6 @@ password_label.pack(pady=10)
 
 password_entry = tk.Entry(login_window, show="*")
 password_entry.pack(pady=5)
-
 login_button = tk.Button(login_window, text="Login", command=handle_login)
 login_button.pack(pady=10)
 
